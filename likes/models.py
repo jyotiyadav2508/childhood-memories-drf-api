@@ -20,7 +20,7 @@ class Like(models.Model):
         Orders Like objects in the order latest to old
         'unique_together' makes sure a user can't like the same post twice
         """
-        ordering = ['created_on']
+        ordering = ['-created_on']
         unique_together = ['owner', 'post']
 
     def __str__(self):
