@@ -1,18 +1,17 @@
-from django.http import Http404
-from rest_framework import status
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import generics, permissions
+from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
-from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
 
 
-class ProfileList(APIView):
+class ProfileList(generics.ListAPIView):
     '''
     Lists all the profiles
     No create view required since profile creation is handled by
     Django signals.
     '''
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
     def get(self, request):
         profiles = Profile.objects.all()
         serializer = ProfileSerializer(
@@ -20,7 +19,7 @@ class ProfileList(APIView):
         return Response(serializer.data)
 
 
-class ProfileDetail(APIView):
+class ProfileDetail(generics.RetrieveUpdateAPIView):
     '''
     Displays details of selected profile
     Allows the owner to edit it
