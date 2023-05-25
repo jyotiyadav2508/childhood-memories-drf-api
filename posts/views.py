@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Post
 from .serializers import PostSerializer
 from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
@@ -19,12 +20,25 @@ class PostList(generics.ListCreateAPIView):
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_on')
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__followed__owner__profile',  # Return specific user's post
+        'likes__owner__profile',  # Return posts a specific user liked
+        'owner__profile',  # Return posts owned by a specific user
+        'category',  #  Return which category the post belongs to
     ]
     ordering_fields = [
         'likes_count',
         'comments_count',
         'likes__created_on',
+    ]
+    search_fields = [
+        'owner__username',
+        'category',
+        'title',
     ]
 
     def perform_create(self, serializer):

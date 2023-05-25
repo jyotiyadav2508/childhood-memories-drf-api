@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions, filters
-# from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
@@ -14,9 +14,9 @@ class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
-    # filter_backends = [
-    #     DjangoFilterBackend,
-    # ]
+    filter_backends = [
+        DjangoFilterBackend,
+    ]
     filterset_fields = [
         'owner',
         'post',

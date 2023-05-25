@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
@@ -18,7 +19,12 @@ class ProfileList(generics.ListAPIView):
     ).order_by('-created_on')
     serializer_class = ProfileSerializer
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__following__followed__profile',
     ]
     ordering_fields = [
         'posts_count',
@@ -26,6 +32,10 @@ class ProfileList(generics.ListAPIView):
         'following_count',
         'owner__following__created_on',
         'owner__followed__created_on',
+    ]
+    search_fields = [
+        'owner__username',
+        'name',
     ]
 
 
