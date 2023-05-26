@@ -29,6 +29,7 @@ class Recommendation(models.Model):
         max_length=50,
         choices=Category.choices
     )
+
     image = models.ImageField(
         upload_to='images/', default='../default_post_ppnjua', blank=True
     )

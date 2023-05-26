@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
+from recommendations.models import Recommendation
 
 
 class Like(models.Model):
@@ -12,8 +13,15 @@ class Like(models.Model):
     post = models.ForeignKey(
         Post, related_name='likes', on_delete=models.CASCADE,
         default=None, null=True,
-        )
+    )
     created_on = models.DateTimeField(auto_now_add=True)
+    recommendation = models.ForeignKey(
+        Recommendation,
+        on_delete=models.CASCADE,
+        related_name='likes',
+        default=None,
+        null=True,
+    )
 
     class Meta:
         """
@@ -21,10 +29,10 @@ class Like(models.Model):
         'unique_together' makes sure a user can't like the same post twice
         """
         ordering = ['-created_on']
-        unique_together = ['owner', 'post']
+        unique_together = ['owner', 'post'], ['owner', 'recommendation']
 
     def __str__(self):
         '''
         Returns the string representation of a model instance
         '''
-        return f'{self.owner} {self.post}'
+        return f'{self.owner} {self.post} {self.recommendation}'

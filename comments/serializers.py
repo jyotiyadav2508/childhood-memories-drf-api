@@ -32,7 +32,7 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_on', 'updated_on',
-            'post', 'content'
+            'post', 'content', 'recommendation',
         ]
 
 
@@ -43,3 +43,6 @@ class CommentDetailSerializer(CommentSerializer):
     Post is a read only field so that we dont have to set it on each update
     """
     post = serializers.ReadOnlyField(source='post.id')
+    recommendation = serializers.ReadOnlyField(
+        source='owner.recommendation.id'
+    )

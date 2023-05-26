@@ -14,10 +14,10 @@ class RecommendationList(generics.ListCreateAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
-    queryset = Recommendation.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_on')
+    # queryset = Recommendation.objects.annotate(
+    #     likes_count=Count('likes', distinct=True),
+    # #     comments_count=Count('comment', distinct=True)
+    # # ).order_by('-created_on')
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -31,7 +31,7 @@ class RecommendationList(generics.ListCreateAPIView):
     ]
     ordering_fields = [
         'likes_count',
-        'comments_count',
+        # 'comments_count',
         'likes__created_on',
     ]
     search_fields = [
@@ -55,7 +55,7 @@ class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
     serializer_class = RecommendationSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Recommendation.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_on')
+    # queryset = Recommendation.objects.annotate(
+    #     likes_count=Count('likes', distinct=True),
+    #     comments_count=Count('comment', distinct=True)
+    # ).order_by('-created_on')

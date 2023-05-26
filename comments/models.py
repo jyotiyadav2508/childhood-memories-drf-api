@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
+from recommendations.models import Recommendation
 
 
 class Comment(models.Model):
@@ -24,5 +25,3 @@ class Comment(models.Model):
         Returns the string representation of a model instance
         '''
         return self.content
-
-
