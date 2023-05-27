@@ -11,7 +11,7 @@ class LikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Like
-        fields = ['id', 'created_on', 'owner', 'post', 'recommendation',]
+        fields = ['id', 'created_on', 'owner', 'post']
 
     def create(self, validated_data):
         '''
@@ -20,4 +20,5 @@ class LikeSerializer(serializers.ModelSerializer):
         try:
             return super().create(validated_data)
         except IntegrityError:
-            raise serializers.ValidationError({'detail': 'possible deplication'})
+            raise serializers.ValidationError({
+                'detail': 'possible deplication'})

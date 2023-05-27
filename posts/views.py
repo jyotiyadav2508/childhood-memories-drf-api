@@ -28,7 +28,7 @@ class PostList(generics.ListCreateAPIView):
         'owner__followed__owner__profile',  # Return specific user's post
         'likes__owner__profile',  # Return posts a specific user liked
         'owner__profile',  # Return posts owned by a specific user
-        'category',   #  Return which category the post belongs to
+        'category',  # Return which category the post belongs to
     ]
     ordering_fields = [
         'likes_count',

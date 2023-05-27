@@ -24,4 +24,7 @@ class Follower(models.Model):
         unique_together = ['owner', 'followed']
 
     def __str__(self):
-        return f'{self.owner} {self.followed}'
+        """
+        Function to create the string for representing Follower model in admin.
+        """
+        return f'{self.owner} is following {self.followed}'
