@@ -63,7 +63,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # DEBUG = 'DEV' in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
+# ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
+ALLOWED_HOSTS = [
+    '8000-jyotiyadav2508-childhood-puzynfeh0w.us2.codeanyapp.com', 'localhost']
 
 
 # Application definition
@@ -93,6 +95,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'post_likes',
 ]
 
 SITE_ID = 1
