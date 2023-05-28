@@ -1,2 +1,2 @@
 release: python manage.py makemigrations && python manage.py migrate
- web: gunicorn drf_api.wsgi
+ web: gunicorn childhood_memories_drf_api.wsgi
