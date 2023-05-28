@@ -161,9 +161,9 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
 ### Database Model
 
-- Database model has been created using the program **Whimsical**
+- Database model has been created using Lucid Chart.
 
-![Screenshot of database model]()
+![Screenshot of database model](docs/images/Database-ERD.png)
 
 ## Technologies Used
 
@@ -251,20 +251,17 @@ The overall structure of the project was modelled from from the [drf-api](https:
    - Users are able to be deleted in the back end.
    - All urls are working perfectly. Can view all profiles when visiting `/profiles/`. Can access specific profiles in detail view when adding specific profile id to url.
 
-   > <details>
-
+   <details>
     <summary>Screenshot of Profile List</summary>
     <img src='docs/images/Profile-List.png' alt='Profile list'>
     </details>
 
-   > <details>
-
+   <details>
     <summary>Screenshot of owner's profile details with edit functionality</summary>
-    <img src='docu/images/Profile-Detail-owner_login.png' alt="owner's profile detail">
+    <img src='docs/images/Profile-Detail-owner-login.png' alt="owner's profile detail">
     </details>
 
-   > <details>
-
+   <details>
     <summary>Screenshot of other's profile details which is readonly </summary>
     <img src='docs/images/Profile-Detail-not-owner.png' alt='Profile details readonly'>
     </details>
@@ -289,11 +286,6 @@ The overall structure of the project was modelled from from the [drf-api](https:
     </details>
 
     <details>
-   <summary>Screenshot of post details </summary>
-    <img src='docs/images/' alt='Post detail'>
-    </details>
-
-    <details>
    <summary>Screenshot of post detail with invalid Id </summary>
     <img src='docs/images/post-detail-not-found.png' alt='Not found message'>
     </details>
@@ -311,6 +303,14 @@ The overall structure of the project was modelled from from the [drf-api](https:
    - Comments are able to be liked and unliked, and have the number of likes changed accurately.
    - All urls are working perfectly. Can view all comments when visiting `/comments/`. Can access specific comments in detail view when adding specific comment id to url.
 
+    <details><summary>Screenshot of Comment List </summary>
+     <img src='docs/images/comment-list.png' alt='CommentList'>
+     </details>
+
+    <details><summary>Screenshot of Comment Detail </summary>
+    <img src='docs/images/comment-detail.png' alt='Comment Detail'>
+    </details>
+
 4. Follower:
 
    - Users are successfully able to follow other users. API successfully reads which user is the follower, and which user is being followed.
@@ -322,13 +322,41 @@ The overall structure of the project was modelled from from the [drf-api](https:
    - Users are able to follow themselves in the back end. But in the front-end, conditional rendering will be applied to prevent users from following themselves.
    - All urls are working perfectly. Can view all followers when visiting `/followers/`. Can access specific followers in detail view when adding specific follower id to url.
 
+    <details><summary>Screenshot of Follower List </summary>
+     <img src='docs/images/follower-list.png' alt='Follower List'>
+     </details>
+
+    <details><summary>Screenshot of Follower Detail </summary>
+    <img src='docs/images/follower-detail.png' alt='Follower Detail'>
+    </details>
+
+    <details><summary>Screenshot of Permission denied to follow someone twice </summary>
+    <img src='docs/images/follower-duplicate.png' alt='Permission Denied msg'>
+    </details>
+
 5. Post likes:
 
-   - Users are successfully able to like other posts. API successfully registers the post_reyakks_id to the post.
+   - Users are successfully able to like other posts. API successfully registers the post_likes_id to the post.
    - Users are successfully able to unlike the posts that they have liked.
    - Users are not able to like their own posts or else a permission denied error will be thrown.
    - If users try to like a post they have already liked, the API will throw a duplicate validation error.
-   - All urls are working perfectly. Can view all post likes when visiting `/post_likes/`. Can access specific post likes in detail view when adding specific post reyakks id to url.
+   - All urls are working perfectly. Can view all post likes when visiting `/post_likes/`. Can access specific post likes in detail view when adding specific post likes id to url.
+
+    <details><summary>Screenshot of Post Likes List </summary>
+     <img src='docs/images/post-likes-list.png' alt='Post likes list'>
+     </details>
+
+    <details><summary>Screenshot of Post Like Detail </summary>
+    <img src='docs/images/post-like-detail.png' alt='Post like detail'>
+    </details>
+
+    <details><summary>Screenshot of Permission denied to like own posts </summary>
+    <img src='docs/images/denied-own-post-like.png' alt='permission denied msg'>
+    </details>
+
+    <details><summary>Screenshot of duplicate post like </summary>
+    <img src='docs/images/post-like-duplicate.png' alt='msg for duplicate post like'>
+    </details>
 
 6. Comment likes:
 
@@ -337,6 +365,18 @@ The overall structure of the project was modelled from from the [drf-api](https:
    - Users are not able to like their own comments or else a permission denied error will be thrown.
    - If users try to like a comment they have already liked, the API will throw a duplicate validation error.
    - All urls are working perfectly. Can view all comment likes when visiting `/comment_likes/`. Can access specific comment likes in detail view when adding specific comment reyakks id to url.
+
+    <details><summary>Screenshot of Comment Likes List </summary>
+     <img src='docs/images/comment-like-list.png' alt='Comment like list'>
+     </details>
+
+    <details><summary>Screenshot of Permission denied to comment own posts </summary>
+    <img src='docs/images/deney-like-own-comment.png' alt='Permission denied msg'>
+    </details>
+
+    <details><summary>Screenshot of duplicate comment like </summary>
+    <img src='docs/images/comment-like-duplicate.png' alt='Msg for duplicate comment like'>
+    </details>
 
 7. Error Handling:
 
@@ -368,7 +408,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
 9. In terminal of your project, run `pip3 install dj_database_url==0.5.0 psycopg2`.
 10. In 'settings.py' file of project, add `import dj_database_url` underneath `import os`.
 11. In 'settings.py', update the DATABASES section to the following:
-    ![Screenshot of database setting code](documentation/deployment-settings-screenshot.png)
+    ![Screenshot of database setting code](doc/images/database-setting.png)
 12. In your 'env.py' file, add a new environment variable to Gitpod with the key set to `DATABASE_URL` and the value to your ElephantSQL database URL.
 13. Temporarily comment out the DEV environment variable so Gitpod can connect to external database.
 14. Back in 'settings.py', add print statement to confirm you are connected do database.
@@ -379,14 +419,17 @@ The overall structure of the project was modelled from from the [drf-api](https:
 19. Create a Procfile by running `touch Procfile`.
 20. Inside Procfile, add:
     `release: python manage.py makemigrations && python manage.py migrate`
-    `web: gunicorn drf_api.wsgi`
+    `web: gunicorn childhood_memories_drf_api.wsgi`
 21. In 'settings.py', update value of ALLOWED_HOSTS variable to include Heroku app's URL.
 22. Add corsheaders to INSTALLED_APPS of 'settings.py'.
 23. Add corsheaders middlewear to the TOP of MIDDLEWARE.
 24. Under MIDDLEWARE list, set the ALLOWED_ORIGINS for network requests to be made to the server with following code:
-    ![Screenshot of cors allowed origins setting code](documentation/deployment-cors-origins.png)
+    ![Screenshot of cors allowed origins setting code](doc/images/client-origin.png)
+
+    ![Screenshot of cors allowed origins setting code](doc/images/client-origin-else-statement-replacement.png)
+
 25. To have front-end app and API deployed to different platforms, set JWT_AUTH_SAMESITE atribute to 'None' like so:
-    ![Screenshot of jwt setting code](documentation/deployment-jwt.png)
+    ![Screenshot of jwt setting code](doc/images/JWT-auth.png)
 26. Remove the SECRET_KEY value and replace the following code to use an environment variable instead.
 27. Set a new value for SECRET_KEY in env.py (do not use the same published to GitHub in commits).
 28. Set the DEBUG value to True only if DEV environment variable exists. This will mean it's True in development, and False in production.
@@ -397,3 +440,18 @@ The overall structure of the project was modelled from from the [drf-api](https:
 33. Add two more Config vars, SECRET_KEY (same value as the one in env.py file) and CLOUDINARY_URL (copy in Cloudinary URL from env.py file without quotation marks).
 34. Open the Deploy tab.
 35. In Deployment method section, select 'Connect to GitHub', search for your repo, and click Connect.
+
+## Credits
+
+### Code
+
+- [Code Institute DRF API Example Project](https://github.com/Code-Institute-Solutions/drf-api)
+  This API was built using Django REST Framework. Most of code is inspired by Code Institute's DRF API example project, including the database model, the different features and functionality of the API, creating serializers, setting up the project, setting up filters and search fields, etc. I decided to use the base of whole project on this API since it was a great fit for the application I had planned and it provides a great foundation to expand upon.
+
+- [Django REST Framework Documentation](https://www.django-rest-framework.org/)
+  The official Django REST Framework documentation was referred to many times while creating this project.
+
+### Acknowledgement
+
+- Code Institute tutors for help with various issues.
+- Stack Overflow for tips, tricks and solutions to fix errors.

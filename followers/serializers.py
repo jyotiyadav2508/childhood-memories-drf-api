@@ -19,7 +19,7 @@ class FollowerSerializer(serializers.ModelSerializer):
         Serializer method field to get the
         length of days followed in days
         """
-        return (now() - obj.created_at).days
+        return (now() - obj.created_on).days
 
     class Meta:
         model = Follower
