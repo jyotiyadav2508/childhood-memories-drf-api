@@ -391,7 +391,9 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
 ### Bugs
 
-- In the middle of my api project, I was not able to login when visiting `/profiles/` or `/posts/` etc. It showed the error `DoesNotExist at /api-auth/login`.
+- (1) Issue: In the middle of my api project, I was not able to login when visiting `/profiles/` or `/posts/` etc. It showed the error `DoesNotExist at /api-auth/login`.
+
+- Fix: I left it as is. Later I started the deployment for my project and strictly followed all the steps mentioned in the LMS like JWT auth setting, client origin, SQL database setting, added some content in settings.py like coresheaders, dj_rest_auth.registrations, SITE_ID, Middleware and many more. Then after successfully deploying it to Heroku, I was able to login/logout when I tested. So don't know exactly what was the matter.
 
 ## Deployment
 
