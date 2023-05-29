@@ -13,10 +13,11 @@
 
 ## Table of Contents
 
-- [Childhood Memories - Back End](#childhood memories---back-end)
+- [Childhood Memories - Back End](#childhood-memories---back-end)
   - [Deployed Link](#deployed-link)
   - [Front-End Links](#front-end-links)
-  - [User Experience (UX)](#user-experience--ux-)
+  - [Table of Contents](#table-of-contents)
+  - [User Experience (UX)](#user-experience-ux)
     - [Project Structure](#project-structure)
     - [User Stories](#user-stories)
     - [Database Model](#database-model)
@@ -29,7 +30,7 @@
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Code](#code)
-    - [Acknowledgements](#acknowledgements)
+    - [Acknowledgement](#acknowledgement)
 
 ---
 
@@ -73,21 +74,21 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
 - Posts
 
-  1. As a **user** I can **create new posts** so that **I can share images, my thoughts, my experience.**
+  1. As a **user** I can **create new posts** so that **I can share images, my memories, my experience.**
 
      - This user story is achieved by creating the Post model. Users can add images, content, category and a title to posts.
 
   2. As a **user** I can **edit posts** so that **I can change my posts, images, etc whenever I change my mind about what I posted or wish to remove/add details.**
 
-     - This user story is achieved by using generics.RetrieveUpdateDestroyAPIView in Post views. Users are able to edit their posts.
+     - This user story is achieved by using generics. RetrieveUpdateDestroyAPIView in Post views. Users are able to edit their posts.
 
   3. As a **user** I can **delete my posts** so that **I can get rid of my posts that I no longer want to be shared.**
 
-     - This user story is achieved by using generics.RetrieveUpdateDestroyAPIView in Post views. Users are able to delete their posts.
+     - This user story is achieved by using generics. RetrieveUpdateDestroyAPIView in Post views. Users are able to delete their posts.
 
   4. As a **user** I can **view the details of a post** so that **I can read more information about the post such as when it was created, who created it, if it was edited, read the comments, etc.**
 
-     - This user story is achieved by using generics.RetrieveUpdateDestroyAPIView in Post views. Users are able to see the detailed information about a post such as who created it, when it was created/edited, if there are comments, etc.
+     - This user story is achieved by using generics. RetrieveUpdateDestroyAPIView in Post views. Users are able to see the detailed information about a post such as who created it, when it was created/edited, if there are comments, etc.
 
   5. As a **user** I can **like posts** so that **I can share my appreciation for the post and show the world and the author that their post is great.**
 
@@ -95,7 +96,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
   6. As a **user** I can **remove likes on a post** so that **I can change my mind about whether I like the post or not.**
 
-     - This user story is achieved using generics.RetrieveDestroyAPIView in Post Like views. Users are able to remove their likes on a post.
+     - This user story is achieved using generics. RetrieveDestroyAPIView in Post Like views. Users are able to remove their likes on a post.
 
 - Comments
 
@@ -105,11 +106,11 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
   2. As a **user** I can **delete my comments on a post** so that **I can remove comments if I no longer want my comments to be public.**
 
-     - This user story is achieved using generics.RetrieveUpdateDestroyAPIView in Comment views. Users are able to delete their comments.
+     - This user story is achieved using generics. RetrieveUpdateDestroyAPIView in Comment views. Users are able to delete their comments.
 
   3. As a **user** I can **read comments on a post** so that **I can read what others think about the post and read the discussion happening.**
 
-     - This user story is achieved using generics.ListCreateAPIView in Comment views. Users are able to read the list of comments on a post.
+     - This user story is achieved using generics. ListCreateAPIView in Comment views. Users are able to read the list of comments on a post.
 
   4. As a **user** I can **edit my comments** so that **have the possibility to remove or add more details to my existing comments.**
 
@@ -117,11 +118,11 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
   5. As a **user** I can **like comments** so that **I can share my appreciation for the comment.**
 
-     - This user story is achieved by creating the Comment Reyakks model. Users are able to reyakk to other users' comments.
+     - This user story is achieved by creating the Comment Likes model. Users are able to like to other users' comments.
 
   6. As a **user** I can **unlike comments** so that **I can change my mind about my positive feelings towards a comment.**
 
-     - This user story is achieved using generics.RetrieveDestroyAPIView in Comment Reyakks views. Users are able to remove their reyakks on a post.
+     - This user story is achieved using generics. RetrieveDestroyAPIView in Comment Likes views. Users are able to remove their likes on a post.
 
 - Profile
 
@@ -131,7 +132,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
   2. As a **user** I can **view a detailed page of users** so that **I can see their posts and learn more about the user. I can also see their following count, followers count, etc.**
 
-     - This user story is achieved using the Yakfile views. Users are able to see posts tied to a user, including their following count and followers count.
+     - This user story is achieved using the Profile views. Users are able to see posts tied to a user, including their following count and followers count.
 
   3. As a **user** I can **view user avatars** so that **easily identify users of the website.**
 
@@ -307,7 +308,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
      <img src='docs/images/comment-list.png' alt='CommentList'>
      </details>
 
-    <details><summary>Screenshot of Comment Detail </summary>
+    <details><summary>Screenshot of Comment Detail using its 'id'</summary>
     <img src='docs/images/comment-detail.png' alt='Comment Detail'>
     </details>
 
@@ -326,7 +327,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
      <img src='docs/images/follower-list.png' alt='Follower List'>
      </details>
 
-    <details><summary>Screenshot of Follower Detail </summary>
+    <details><summary>Screenshot of Follower Detail using it 'id'</summary>
     <img src='docs/images/follower-detail.png' alt='Follower Detail'>
     </details>
 
@@ -346,7 +347,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
      <img src='docs/images/post-likes-list.png' alt='Post likes list'>
      </details>
 
-    <details><summary>Screenshot of Post Like Detail </summary>
+    <details><summary>Screenshot of Post Like Detail using its 'id'</summary>
     <img src='docs/images/post-like-detail.png' alt='Post like detail'>
     </details>
 
@@ -360,11 +361,11 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
 6. Comment likes:
 
-   - Users are successfully able to like other comments. API successfully registers the comment_reyakks_id to the comment.
+   - Users are successfully able to like other comments. API successfully registers the comment_likes_id to the comment.
    - Users are successfully able to unlike the comments that they have liked.
    - Users are not able to like their own comments or else a permission denied error will be thrown.
    - If users try to like a comment they have already liked, the API will throw a duplicate validation error.
-   - All urls are working perfectly. Can view all comment likes when visiting `/comment_likes/`. Can access specific comment likes in detail view when adding specific comment reyakks id to url.
+   - All urls are working perfectly. Can view all comment likes when visiting `/comment_likes/`. Can access specific comment likes in detail view when adding specific comment_likes_id to url.
 
     <details><summary>Screenshot of Comment Likes List </summary>
      <img src='docs/images/comment-like-list.png' alt='Comment like list'>
@@ -394,7 +395,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
 ## Deployment
 
-- The following steps were taken for the deployment process for the back end component of Yakker. These steps take place after Django is correctly installed and an 'env.py' file is made (and file is added to .gitignore). [Cloudinary](https://cloudinary.com/) must also be successfully hooked up to Django by adding in all necessary imports and settings in 'settings.py' and 'env.py'.
+- The following steps were taken for the deployment process for the back end component of Childhood Memories. These steps take place after Django is correctly installed and an 'env.py' file is made (and file is added to .gitignore). [Cloudinary](https://cloudinary.com/) must also be successfully hooked up to Django by adding in all necessary imports and settings in 'settings.py' and 'env.py'.
   Instructions are copied from CI's DRF Example Project.
 
 1. Login or create an account to [ElephantSQL](https://www.elephantsql.com/) and click "Create New Instance".
@@ -403,12 +404,12 @@ The overall structure of the project was modelled from from the [drf-api](https:
 4. Return to ElephantSQL dashboard and click database instance name for this project.
 5. In URL section, click the copy icon to copy database URL.
 6. Log in to [Heroku](https://www.heroku.com/).
-7. Create a new app, add a unique app name (this project is called "yakker") and choose your region, and create app.
+7. Create a new app, add a unique app name (this project is called "Childhood memories") and choose your region, and create app.
 8. Open the settings tab of your project, Add a Config Var 'DATABASE_URL' and for the value, copy in the database URL from ElephantSQL (without quotation marks).
 9. In terminal of your project, run `pip3 install dj_database_url==0.5.0 psycopg2`.
 10. In 'settings.py' file of project, add `import dj_database_url` underneath `import os`.
 11. In 'settings.py', update the DATABASES section to the following:
-    ![Screenshot of database setting code](doc/images/database-setting.png)
+    ![Screenshot of database setting code](docs/images/database-setting.png)
 12. In your 'env.py' file, add a new environment variable to Gitpod with the key set to `DATABASE_URL` and the value to your ElephantSQL database URL.
 13. Temporarily comment out the DEV environment variable so Gitpod can connect to external database.
 14. Back in 'settings.py', add print statement to confirm you are connected do database.
@@ -424,12 +425,12 @@ The overall structure of the project was modelled from from the [drf-api](https:
 22. Add corsheaders to INSTALLED_APPS of 'settings.py'.
 23. Add corsheaders middlewear to the TOP of MIDDLEWARE.
 24. Under MIDDLEWARE list, set the ALLOWED_ORIGINS for network requests to be made to the server with following code:
-    ![Screenshot of cors allowed origins setting code](doc/images/client-origin.png)
+    ![Screenshot of cors allowed origins setting code](docs/images/client-origin.png)
 
-    ![Screenshot of cors allowed origins setting code](doc/images/client-origin-else-statement-replacement.png)
+    ![Screenshot of cors allowed origins setting code](docs/images/client-origin-else-statement-replacement.png)
 
 25. To have front-end app and API deployed to different platforms, set JWT_AUTH_SAMESITE atribute to 'None' like so:
-    ![Screenshot of jwt setting code](doc/images/JWT-auth.png)
+    ![Screenshot of JWT setting code](docs/images/JWT-auth.png)
 26. Remove the SECRET_KEY value and replace the following code to use an environment variable instead.
 27. Set a new value for SECRET_KEY in env.py (do not use the same published to GitHub in commits).
 28. Set the DEBUG value to True only if DEV environment variable exists. This will mean it's True in development, and False in production.
