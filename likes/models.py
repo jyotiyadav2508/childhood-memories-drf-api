@@ -10,6 +10,7 @@ class Like(models.Model):
     'post' which is a Post instance
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(
         Post, related_name='likes', on_delete=models.CASCADE,
         default=None, null=True,
@@ -17,7 +18,6 @@ class Like(models.Model):
     comment = models.ForeignKey(
         Comment, related_name='likes', on_delete=models.CASCADE,
         default=None, null=True,
-        created_on=models.DateTimeField(auto_now_add=True)
     )
 
     class Meta:
