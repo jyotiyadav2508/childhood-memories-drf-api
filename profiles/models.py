@@ -10,7 +10,7 @@ class Profile(models.Model):
     '''
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=True)
-    bio = models.TextField(blank=True)
+    profession = models.TextField(blank=True)
     location = models.CharField(max_length=255, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
