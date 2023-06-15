@@ -31,7 +31,7 @@ class CommentSerializer(serializers.ModelSerializer):
         return naturaltime(obj.updated_on)
 
     def get_comment_likes_id(self, obj):
-        user  = self.context['request'].user
+        user = self.context['request'].user
         if user.is_authenticated:
             comment_likes = CommentLikes.objects.filter(
                 owner=user, comment=obj

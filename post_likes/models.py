@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from posts.models import Post
 
 
-class Like(models.Model):
+class PostLikes(models.Model):
     """
-    Like model, related to 'owner' which is a User instance and
+    PostLike model, related to 'owner' which is a User instance and
     'post' which is a Post instance
     """
 
@@ -13,7 +13,7 @@ class Like(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(
         Post,
-        related_name="likes",
+        related_name="post_likes",
         on_delete=models.CASCADE,
         default=None,
         null=True,
