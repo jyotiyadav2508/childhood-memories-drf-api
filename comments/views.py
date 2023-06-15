@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
 from .models import Comment
+from django.db.models import Count
 from .serializers import CommentSerializer, CommentDetailSerializer
 
 
@@ -13,7 +14,9 @@ class CommentList(generics.ListCreateAPIView):
     """
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.annotate(
+        comment_likes_count=Count('comment_likes', distinct=True),
+    ).order_by('-created_on')
     filter_backends = [
         DjangoFilterBackend,
     ]
@@ -36,4 +39,6 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.annotate(
+        comment_likes_count=Count('comment_likes', distinct=True),
+    ).order_by('-created_on')
