@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
-from comments.models import Comment
 
 
 class Like(models.Model):
@@ -19,12 +18,6 @@ class Like(models.Model):
         default=None,
         null=True,
     )
-    comment = models.ForeignKey(
-        Comment, related_name="likes",
-        on_delete=models.CASCADE,
-        default=None,
-        null=True
-    )
 
     class Meta:
         """
@@ -33,10 +26,10 @@ class Like(models.Model):
         """
 
         ordering = ["-created_on"]
-        unique_together = ["owner", "post"], ["owner", "comment"]
+        unique_together = ["owner", "post"]
 
     def __str__(self):
         """
         Returns the string representation of a model instance
         """
-        return f"{self.owner} {self.post} {self.comment}"
+        return f"{self.owner} {self.post}"

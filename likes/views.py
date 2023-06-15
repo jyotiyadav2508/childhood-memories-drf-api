@@ -1,6 +1,8 @@
 from rest_framework import generics, permissions
 from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
-from likes.models import Like
+from likes.models import Like, Post
+from django.shortcuts import get_object_or_404
+from django.core.exceptions import PermissionDenied
 from likes.serializers import LikeSerializer
 
 
@@ -13,7 +15,11 @@ class LikeList(generics.ListCreateAPIView):
     queryset = Like.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        post = get_object_or_404(Post, pk=serializer.initial_data['post'])
+        if post.owner == self.request.user:
+            raise PermissionDenied
+        else:
+            serializer.save(owner=self.request.user)
 
 
 class LikeDetail(generics.RetrieveDestroyAPIView):
