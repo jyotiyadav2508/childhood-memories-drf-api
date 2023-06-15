@@ -64,8 +64,7 @@ DEBUG = 'DEV' in os.environ
 
 # ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
 ALLOWED_HOSTS = [
-    'childhood-memories.herokuapp.com', 'localhost',
-    '8000-jyotiyadav2508-childhood-puzynfeh0w.us2.codeanyapp.com']
+    'childhood-memories.herokuapp.com', 'localhost']
 
 
 # Application definition

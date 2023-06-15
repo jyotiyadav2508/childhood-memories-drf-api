@@ -17,6 +17,8 @@ class Post(models.Model):
         PERSON = 'Person',
         PLACE = 'Place',
         EVENT = 'Event',
+        Art = 'Art',
+        Media = 'Media',
         OTHERS = 'Others',
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
