@@ -9,15 +9,21 @@ class Like(models.Model):
     Like model, related to 'owner' which is a User instance and
     'post' which is a Post instance
     """
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(
-        Post, related_name='likes', on_delete=models.CASCADE,
-        default=None, null=True,
+        Post,
+        related_name="likes",
+        on_delete=models.CASCADE,
+        default=None,
+        null=True,
     )
     comment = models.ForeignKey(
-        Comment, related_name='likes', on_delete=models.CASCADE,
-        default=None, null=True,
+        Comment, related_name="likes",
+        on_delete=models.CASCADE,
+        default=None,
+        null=True
     )
 
     class Meta:
@@ -25,11 +31,12 @@ class Like(models.Model):
         Orders Like objects in the order latest to old
         'unique_together' makes sure a user can't like the same post twice
         """
-        ordering = ['-created_on']
-        unique_together = ['owner', 'post'], ['owner', 'comment']
+
+        ordering = ["-created_on"]
+        unique_together = ["owner", "post"], ["owner", "comment"]
 
     def __str__(self):
-        '''
+        """
         Returns the string representation of a model instance
-        '''
-        return f'{self.owner} {self.post} {self.comment}'
+        """
+        return f"{self.owner} {self.post} {self.comment}"
