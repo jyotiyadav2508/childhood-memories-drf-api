@@ -12,6 +12,15 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comment_count = serializers.ReadOnlyField()
 
+    class Meta:
+        model = Post
+        fields = [
+            'id', 'owner', 'is_owner', 'profile_id',
+            'profile_image', 'created_on', 'updated_on',
+            'title', 'content', 'image', 'category', 'post_likes_id',
+            'likes_count', 'comment_count',
+        ]
+
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')

@@ -1,10 +1,10 @@
 # Childhood Memories - Back End
 
-> **90's Childhood** is a social-media website designed to mimic the features of Twitter. Users can create an account, log in, make a post, make comments on posts, like other users' posts and comments, and change their profile photo and profile biography. This website is designed to allow users to make posts about whatever they want but my objective is to recall our 90's childhood when there was no candy crush, whatsapp and twitter. This repository contains the back end API portion of **90's Childhood**, created with Django REST Framework.
+> **Childhood Memories** is a social-media website designed to mimic the features of Twitter. Users can create an account, log in, make a post, make comments on posts, like other users' posts and comments, and change their profile photo and profile biography. This website is designed to allow users to make posts about whatever they want but my objective is to recall our 90's childhood when there was no candy crush, whatsapp and twitter. This repository contains the back end API portion of **Childhood Memories**, created with Django REST Framework.
 
 ## Deployed Link
 
-- [Childhood Memories Back End Deployed Link]()
+- [Childhood Memories Back End Deployed Link](https://childhood-memories.herokuapp.com/)
 
 ## Front-End Links
 
@@ -390,6 +390,8 @@ The overall structure of the project was modelled from from the [drf-api](https:
    - Users are able to log out of the back end successfully.
 
 ### Bugs
+
+During project work I have come across many errors related to FieldError, TypeError, NodeNotFoundError etc. I followed stackoverflow and Slack community to solve them.
 
 - (1) Issue: In the middle of my api project, I was not able to login when visiting `/profiles/` or `/posts/` etc. It showed the error `DoesNotExist at /api-auth/login`.
 
