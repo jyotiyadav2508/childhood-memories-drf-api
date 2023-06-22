@@ -46,12 +46,3 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return post_likes.id if post_likes else None
         return None
-
-    class Meta:
-        model = Post
-        fields = [
-            'id', 'owner', 'is_owner', 'profile_id',
-            'profile_image', 'created_on', 'updated_on',
-            'title', 'content', 'image', 'category', 'post_likes_id',
-            'likes_count', 'comment_count',
-        ]
