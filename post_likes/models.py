@@ -32,4 +32,4 @@ class PostLikes(models.Model):
         """
         Returns the string representation of a model instance
         """
-        return f"{self.owner} {self.post}"
+        return f"{self.owner} liked your post: {self.post}"

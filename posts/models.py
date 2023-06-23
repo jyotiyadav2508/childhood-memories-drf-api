@@ -44,4 +44,5 @@ class Post(models.Model):
         '''
         Returns the string representation of a model instance
         '''
-        return f'{self.id} {self.title}'
+        return f"Post ID {self.id} with post title:-{self.title}"
+

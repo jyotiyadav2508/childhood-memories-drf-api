@@ -23,4 +23,4 @@ class Comment(models.Model):
         '''
         Returns the string representation of a model instance
         '''
-        return self.content
+        return f"Comment:- {self.content}"

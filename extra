@@ -1,0 +1,121 @@
+post_likes
+models.py
+
+from django.db import models
+from django.contrib.auth.models import User
+from posts.models import Post
+
+
+class PostLikes(models.Model):
+    """
+    PostLike model, related to 'owner' which is a User instance and
+    'post' which is a Post instance
+    """
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(
+        Post,
+        related_name="post_likes",
+        on_delete=models.CASCADE,
+        default=None,
+        null=True,
+    )
+
+    class Meta:
+        """
+        Orders Like objects in the order latest to old
+        'unique_together' makes sure a user can't like the same post twice
+        """
+
+        ordering = ["-created_on"]
+        unique_together = ["owner", "post"]
+
+    def __str__(self):
+        """
+        Returns the string representation of a model instance
+        """
+        return f"{self.owner} {self.post}"
+
+
+
+SERIALIZERS.Py
+
+from django.db import IntegrityError
+from rest_framework import serializers
+from post_likes.models import PostLikes
+
+
+class PostLikeSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Like model
+    """
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = PostLikes
+        fields = ['id', 'created_on', 'owner', 'post']
+
+    def create(self, validated_data):
+        '''
+        Handles duplicated likes by the same user
+        '''
+        try:
+            return super().create(validated_data)
+        except IntegrityError:
+            raise serializers.ValidationError({
+                'detail': 'possible duplication'})
+
+URLS.Py
+
+from django.urls import path
+from post_likes import views
+
+urlpatterns = [
+    path('post_likes/', views.PostLikeList.as_view()),
+    path('post_likes/<int:pk>/', views.PostLikeDetail.as_view()),
+]
+
+
+vIEWS.Py
+
+from rest_framework import generics, permissions
+from childhood_memories_drf_api.permissions import IsOwnerOrReadOnly
+from post_likes.models import PostLikes, Post
+from django.shortcuts import get_object_or_404
+from django.core.exceptions import PermissionDenied
+from post_likes.serializers import PostLikeSerializer
+
+
+class PostLikeList(generics.ListCreateAPIView):
+    """
+    List likes or create a like if logged in
+    """
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = PostLikeSerializer
+    queryset = PostLikes.objects.all()
+
+    def perform_create(self, serializer):
+        post = get_object_or_404(Post, pk=serializer.initial_data['post'])
+        if post.owner == self.request.user:
+            raise PermissionDenied
+        else:
+            serializer.save(owner=self.request.user)
+
+
+class PostLikeDetail(generics.RetrieveDestroyAPIView):
+    '''
+    Class for the LikeDetail generic API view
+    Retrieve a like or delete it by id if you own it.
+    '''
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = PostLikeSerializer
+    queryset = PostLikes.objects.all()
+
+
+ADMIN.Py
+
+from django.contrib import admin
+from .models import PostLikes
+
+admin.site.register(PostLikes)
