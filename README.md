@@ -1,6 +1,6 @@
 # Childhood Memories - Back End
 
-> **Childhood Memories** is a social-media website designed to mimic the features of Twitter. Users can create an account, log in, make a post, make comments on posts, like other users' posts and comments, and change their profile photo and profile biography. This website is designed to allow users to make posts about whatever they want but my objective is to recall our 90's childhood when there was no candy crush, whatsapp and twitter. This repository contains the back end API portion of **Childhood Memories**, created with Django REST Framework.
+> **Childhood Memories** is a social-media website designed to mimic the features of Twitter. Users can create an account, log in, make a post, make comments on posts, like other users' posts and comments, and change their profile photo and profile biography. This website is designed to allow users to make posts about whatever they want but my objective is to recall our childhood when there was no candy crush, whatsapp and twitter. This repository contains the back end API portion of **Childhood Memories**, created with Django REST Framework.
 
 ## Deployed Link
 
@@ -9,7 +9,7 @@
 ## Front-End Links
 
 - [Childhood Memories Front-End Deployed Link]()
-- [Childhood Memories Front-End GitHub]()
+- [Childhood Memories Front-End GitHub](https://github.com/jyotiyadav2508/childhood-memories-react-pp5)
 
 ## Table of Contents
 
@@ -204,7 +204,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
    - Heroku was used to deploy this project.
 
-4. [Whimsical](https://whimsical.com)
+4. [Lucid Chart](https://www.lucidchart.com/)
 
    - Whimsical was used to create the data model for the back end.
 
@@ -396,6 +396,27 @@ During project work I have come across many errors related to FieldError, TypeEr
 - (1) Issue: In the middle of my api project, I was not able to login when visiting `/profiles/` or `/posts/` etc. It showed the error `DoesNotExist at /api-auth/login`.
 
 - Fix: I left it as is. Later I started the deployment for my project and strictly followed all the steps mentioned in the LMS like JWT auth setting, client origin, SQL database setting, added some content in settings.py like coresheaders, dj_rest_auth.registrations, SITE_ID, Middleware and many more. Then after successfully deploying it to Heroku, I was able to login/logout when I tested. So don't know exactly what was the matter.
+
+- (2) Issue: NodeNotFoundError and able to solve the error by deleting the mentioned migration file. 
+      <details><summary>Screenshot of NodeNotFoundError </summary>
+    <img src='docs/images/NodeNotFoundError.png' alt='NodeNotFoundError image'>
+    </details>
+- **Solution** got from the stackoverflow. [Link here](https://stackoverflow.com/questions/44049808/how-could-i-run-makemigrations-without-errors-in-django)
+
+- (3) Issue:    <details><summary>Screenshot of TypeError </summary>
+    <img src='docs/images/type-error.png' alt='Type error image'>
+    </details>
+
+    **Solution** got from Slack, Changed filterset_fields: 'likes_owner_profile' to 'post_likes_owner_profile' in posts views
+
+- (4) Issue: Got a ProgrammingError: relation 'post_likes' already exist during heroku deployment. The reason for this error was probabily that I had previously deleted post_likes app from the project and then renamed the likes app to post_likes. So there was already an app with modal PostLikes and I was trying to creat new one and might not run migration.
+
+    <details><summary>Screenshot of ProgrammingError </summary>
+    <img src='docs/images/programming-error.png' alt='Programming error image'>
+    </details>
+
+**Solution**: First I tried to remove table from the Elephantsql using command `DROP TABLE post_likes_postlikes;` and deleted the old migration files for the app before new migration. Then ran `python3 manage.py makemigrations --empty post_likes` and `python3 manage.py migrate post_likes` But It didn't create table in Elephantsql. At last I created a new Database instance and swap the URL for that into DATABASE_URL in env.py and in DATABASE_URL in config vars.
+
 
 ## Deployment
 
