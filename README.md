@@ -8,7 +8,7 @@
 
 ## Front-End Links
 
-- [Childhood Memories Front-End Deployed Link]()
+- [Childhood Memories Front-End Deployed Link](https://childhood-memories-front-end.herokuapp.com/)
 - [Childhood Memories Front-End GitHub](https://github.com/jyotiyadav2508/childhood-memories-react-pp5)
 
 ## Table of Contents
@@ -138,15 +138,6 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
      - This user story is achieved by the Profile model, allowing users to view profile images/avatars of other users.
 
-- Errors
-
-  1. As a **user** I can **view a nice 500 page in the API** so that **I can be informed whether the server or database is having an issue on a nice, user-friendly interface.**
-
-     - This user story is achieved by creating custom views to throw a 500 page in a readable format when the server or database is having an issue.
-
-  2. As a **user** I can **see a nice 404 page in the API** so that **I know if I have reached a webpage that does not exist on a more user-friendly interface.**
-
-     - This user story is achieved by creating custom views to throw a 404 page in a readable format when a link or page does not exist.
 
 - Searching
 
@@ -206,7 +197,7 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
 4. [Lucid Chart](https://www.lucidchart.com/)
 
-   - Whimsical was used to create the data model for the back end.
+   - Lucid Chart was used to create the data model for the back end.
 
 5. [CI Python Linter](https://pep8ci.herokuapp.com/)
 
@@ -235,7 +226,97 @@ The overall structure of the project was modelled from from the [drf-api](https:
 
 ### Validation Testing
 
-- All files (except env.py and settings.py) have been run through CI Python Linter and all files returned no issues.
+- Following files have been run through CI Python Linter and all files returned no issues.
+
+<details>
+<summary>Screenshot of posts models.py</summary>
+<img src='docs/validations/post-models-py.png' alt='post models validation'>
+</details>
+
+<details>
+<summary>Screenshot of posts serializers.py</summary>
+<img src='docs/validations/post-serializers-py.png' alt='post serializers validation'>
+</details>
+
+<details>
+<summary>Screenshot of posts views.py</summary>
+<img src='docs/validations/posts-views-py.png' alt='post views validation'>
+</details>
+
+<details>
+<summary>Screenshot of postlikes models.py</summary>
+<img src='docs/validations/post-likes-models-py.png' alt='post likes models validation'>
+</details>
+
+<details>
+<summary>Screenshot of postlikes serializers.py</summary>
+<img src='docs/validations/post-likes-serializers-py.png' alt='post likes serializers validation'>
+</details>
+
+<details>
+<summary>Screenshot of postlikes views.py</summary>
+<img src='docs/validations/post-likes-views-py.png' alt='post likes views validation'>
+</details>
+
+<details>
+<summary>Screenshot of commentlikes models.py</summary>
+<img src='docs/validations/comment-likes-models-py.png' alt='comment likes models validation'>
+</details>
+
+<details>
+<summary>Screenshot of commentlikes serializers.py</summary>
+<img src='docs/validations/comment-likes-serializers-py.png' alt='comment likes serializers validation'>
+</details>
+
+<details>
+<summary>Screenshot of commentlikes views.py</summary>
+<img src='docs/validations/comment-likes-views-py.png' alt='comment likes views validation'>
+</details>
+
+<details>
+<summary>Screenshot of comments models.py</summary>
+<img src='docs/validations/comments-models-py.png' alt='comments models validation'>
+</details>
+
+<details>
+<summary>Screenshot of comments serializers.py</summary>
+<img src='docs/validations/comments-serializers-py.png' alt='comments serializers validation'>
+</details>
+
+<details>
+<summary>Screenshot of comments views.py</summary>
+<img src='docs/validations/comments-views-py.png' alt='comments views validation'>
+</details>
+
+<details>
+<summary>Screenshot of followers models.py</summary>
+<img src='docs/validations/followers-models-py.png' alt='followers models validation'>
+</details>
+
+<details>
+<summary>Screenshot of followers serializers.py</summary>
+<img src='docs/validations/followers-serializers-py.png' alt='followers serializers validation'>
+</details>
+
+<details>
+<summary>Screenshot of followers views.py</summary>
+<img src='docs/validations/followers-views-py.png' alt='followers views validation'>
+</details>
+
+<details>
+<summary>Screenshot of profiles models.py</summary>
+<img src='docs/validations/profiles-models-py.png' alt='profiles models validation'>
+</details>
+
+<details>
+<summary>Screenshot of profiles serializers.py</summary>
+<img src='docs/validations/profiles-serializers-py.png' alt='profiles serializers validation'>
+</details>
+
+<details>
+<summary>Screenshot of profiles views.py</summary>
+<img src='docs/validations/profiles-views-py.png' alt='profiles views validation'>
+</details>
 
 ### Manual Testing
 
@@ -379,12 +460,8 @@ The overall structure of the project was modelled from from the [drf-api](https:
     <img src='docs/images/comment-like-duplicate.png' alt='Msg for duplicate comment like'>
     </details>
 
-7. Error Handling:
 
-   - When a 404 error is thrown (the user accesses a page that does not exist), the custom error handle message will show.
-   - When a 500 error is thrown (the back end or server is having an issue), the custom error handle message will show.
-
-8. Authentication:
+7. Authentication:
    - Users are able to create a new account on the back end and the new user details will be saved.
    - In the back end, users are able to successfully login and view their username in the navigation bar.
    - Users are able to log out of the back end successfully.
