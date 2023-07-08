@@ -62,12 +62,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-# ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
-ALLOWED_HOSTS = [
-    'childhood-memories.herokuapp.com', 'localhost',
-    '8000-jyotiyadav2508-childhood-puzynfeh0w.us2.codeanyapp.com' 
-]
-
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
 
 # Application definition
 
@@ -161,13 +156,6 @@ else:
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
